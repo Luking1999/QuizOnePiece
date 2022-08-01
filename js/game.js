@@ -87,20 +87,31 @@ $('.resposta').click(function(){
 })
 $('#confirmar').click(function(){
     // Pegar o indice da pergunta confirmada
-    var indice = $("#perguntas").attr(data-indice)
+    var indice = $("#pergunta").attr('data-indice')
     // Pegar resposta correta
     var respostaCerta = perguntas[indice].correta;
     // Pergunta q o usuario escolheu
-    $('.reposta').each(function(){
+    $('.resposta').each(function(){
         if($(this).hasClass('selecionada')){
             var respSelecionada = $(this).attr('id')
-            
-            if(respostaCerta === respSelecionada){
+
+            if(respostaCerta == respSelecionada){
                 alert('ah mizeravi quem te ensinou?')
+                proxPergunta()
             }else{
                 alert('erroooooou')
             }
         }
     })
-
 })
+
+function proxPergunta(){
+    // Percorre todas as classes removendo as selecionadas
+    $('.resposta').each(function(){
+        if($(this).hasClass('selecionada')){
+            $(this).removeClass('selecionada')
+        }
+    })
+    gerarPergunta(qtdPerguntas)
+
+}
