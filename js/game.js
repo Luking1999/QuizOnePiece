@@ -59,6 +59,26 @@ function gerarPergunta(todasPerguntas){
         for(var i=0; i<4;i++){
             $("#resp"+i).html(perguntas[aleatorio].respostas[i])
         }
+        // Embaralhando respostas
+        var pai = $("#respostas")
+        var botoes = pai.children()
+        for(var i = 1; i<botoes.length;i++){
+            pai.append(botoes.eq(Math.floor(Math.random() * botoes.length)))
+        }
+    }else{
+        // Pergunta ja foi feita
+        if(perguntasFeitas.length < qtdPerguntas +1){
+            return gerarPergunta(todasPerguntas)
+        }else{
+            
+        }
     }
-
 }
+$('.resposta').click(function(){
+    $('.resposta').each(function(){
+        if($(this).hasClass('selecionada')){
+            $(this).removeClass('selecionada')
+        }
+    })
+    $(this).addClass('selecionada');
+})

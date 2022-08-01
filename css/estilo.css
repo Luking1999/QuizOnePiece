@@ -14,19 +14,27 @@ button{
     display: block;
     width: 350px;
     padding: 10px;
+    border: none;
+    border-radius: 10px;
+
 }
 .resposta{
     margin: auto auto;
     margin-bottom: 2%;
 }
+.resposta:hover{
+    background-color: aqua;
+}
+.resposta.selecionada{
+    background-color: rgb(153, 216, 216);
+}
 #confirmar{
     margin: auto auto;
-    background: cadetblue;
+    background: aqua;
     border: none;
-    color: white;
+    color: black;
     border-radius: 10px;
 }
 #confirmar:hover{
-    background: rgb(17, 48, 49);
-
+    background: rgb(40, 204, 204);
 }
