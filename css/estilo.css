@@ -5,4 +5,28 @@
 body{
     padding: 0;
     margin: 0;
+    text-align: center;
+}
+#quiz{
+    margin-top: 10%;
+}
+button{
+    display: block;
+    width: 350px;
+    padding: 10px;
+}
+.resposta{
+    margin: auto auto;
+    margin-bottom: 2%;
+}
+#confirmar{
+    margin: auto auto;
+    background: cadetblue;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+#confirmar:hover{
+    background: rgb(17, 48, 49);
+
 }
