@@ -55,6 +55,8 @@ function gerarPergunta(todasPerguntas){
         var p_selecionada = perguntas[aleatorio].pergunta
         // Colocando pergunta no html
         $("#pergunta").html(p_selecionada);
+        // salvando indice da pergunta
+        $('#pergunta').attr('data-indice', aleatorio)
         // Colocando respostas
         for(var i=0; i<4;i++){
             $("#resp"+i).html(perguntas[aleatorio].respostas[i])
@@ -75,10 +77,30 @@ function gerarPergunta(todasPerguntas){
     }
 }
 $('.resposta').click(function(){
+    // Percorre todas as classes removendo as selecionadas
     $('.resposta').each(function(){
         if($(this).hasClass('selecionada')){
             $(this).removeClass('selecionada')
         }
     })
     $(this).addClass('selecionada');
+})
+$('#confirmar').click(function(){
+    // Pegar o indice da pergunta confirmada
+    var indice = $("#perguntas").attr(data-indice)
+    // Pegar resposta correta
+    var respostaCerta = perguntas[indice].correta;
+    // Pergunta q o usuario escolheu
+    $('.reposta').each(function(){
+        if($(this).hasClass('selecionada')){
+            var respSelecionada = $(this).attr('id')
+            
+            if(respostaCerta === respSelecionada){
+                alert('ah mizeravi quem te ensinou?')
+            }else{
+                alert('erroooooou')
+            }
+        }
+    })
+
 })
