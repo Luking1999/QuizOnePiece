@@ -77,13 +77,10 @@ function gerarPergunta(todasPerguntas){
     }
 }
 $('.resposta').click(function(){
-    // Percorre todas as classes removendo as selecionadas
-    $('.resposta').each(function(){
-        if($(this).hasClass('selecionada')){
-            $(this).removeClass('selecionada')
-        }
-    })
-    $(this).addClass('selecionada');
+    if($(".quiz").attr('data-status')!== 'travado'){
+        resetarBotoes()
+        $(this).addClass('selecionada');
+    }
 })
 $('#confirmar').click(function(){
     // Pegar o indice da pergunta confirmada
@@ -99,19 +96,37 @@ $('#confirmar').click(function(){
                 alert('ah mizeravi quem te ensinou?')
                 proxPergunta()
             }else{
-                alert('erroooooou')
+                $(".quiz").attr('data-status','travado')
+                $('#'+respostaCerta).addClass('correta')
+                $('#'+respSelecionada).removeClass('selecionada')
+                $('#'+respSelecionada).addClass('errada')
+                setTimeout(function(){
+                    novoJogo()
+                }, 4000)
             }
         }
     })
 })
-
+function novoJogo(){
+    perguntasFeitas = []
+    resetarBotoes()
+    gerarPergunta(qtdPerguntas)
+}
 function proxPergunta(){
+    resetarBotoes()
+    gerarPergunta(qtdPerguntas)
+}
+function resetarBotoes(){
     // Percorre todas as classes removendo as selecionadas
     $('.resposta').each(function(){
         if($(this).hasClass('selecionada')){
             $(this).removeClass('selecionada')
         }
+        if($(this).hasClass('correta')){
+            $(this).removeClass('correta')
+        }
+        if($(this).hasClass('errada')){
+            $(this).removeClass('errada')
+        }
     })
-    gerarPergunta(qtdPerguntas)
-
 }

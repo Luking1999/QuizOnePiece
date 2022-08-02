@@ -22,6 +22,14 @@ button{
     margin: auto auto;
     margin-bottom: 2%;
 }
+.errada{
+    background: red;
+    color: white;
+}
+.correta{
+    background: green;
+    color: white;
+}
 .resposta:hover{
     background-color: aqua;
 }
